@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate lazy_static;
 
-use std::{sync::Arc, fs::File};
+use std::{sync::Arc};
 
 use clap::Command;
 use log::{warn, info};

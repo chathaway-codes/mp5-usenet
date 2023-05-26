@@ -1,8 +1,8 @@
 use clap::Command;
 use log::warn;
-use mp5_usenet::{Listener, GroupClient, GroupRequest, GroupResponse, Group};
+use mp5_usenet::{Listener, GroupRequest, GroupResponse, Group};
 use anyhow::Result;
-use tokio::{net::TcpStream, io::{AsyncWriteExt, BufReader, AsyncBufReadExt, AsyncReadExt}};
+use tokio::{net::TcpStream, io::{AsyncWriteExt, AsyncReadExt}};
 
 #[tokio::main]
 async fn main() -> Result<()> {

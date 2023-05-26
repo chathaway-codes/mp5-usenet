@@ -1,9 +1,9 @@
 use std::{collections::HashMap, sync::Arc};
 
-use clap::{Command, Arg, ArgMatches, arg};
+use clap::{Command, ArgMatches, arg};
 use log::{warn, info};
 use serde::{Serialize, Deserialize, de::DeserializeOwned};
-use tokio::{net::{TcpListener, TcpStream, tcp::{ReadHalf, OwnedWriteHalf, OwnedReadHalf}}, io::{AsyncWriteExt, AsyncReadExt}, sync::{Mutex, oneshot::{Sender, self}}};
+use tokio::{net::{TcpListener, TcpStream, tcp::{OwnedWriteHalf, OwnedReadHalf}}, io::{AsyncWriteExt, AsyncReadExt}, sync::{Mutex, oneshot::{Sender, self}}};
 use anyhow::{Result, anyhow};
 use async_trait::async_trait;
 
@@ -103,7 +103,7 @@ pub struct Client {
 
 #[async_trait]
 impl HandleCallback for Arc<Mutex<ClientState>> {
-    async fn handle(&self, session: u64, index: usize, bytes: &[u8]) -> Result<()> {
+    async fn handle(&self, _session: u64, index: usize, bytes: &[u8]) -> Result<()> {
         let msg = Vec::from(bytes);
         let mut state = self.lock().await;
         if let Some(cb) = state.callbacks.remove(&index) {

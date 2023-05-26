@@ -2,9 +2,9 @@ use std::collections::HashMap;
 
 use clap::Command;
 use log::{warn, info};
-use mp5_usenet::{Listener, GroupClient, GroupRequest, GroupResponse, Group, Context, StateRequest, StateResponse, FileRequest, FileResponse};
+use mp5_usenet::{Listener, FileRequest, FileResponse};
 use anyhow::Result;
-use tokio::{net::TcpStream, io::{AsyncWriteExt, BufReader, AsyncBufReadExt, AsyncReadExt}};
+use tokio::{net::TcpStream, io::{AsyncWriteExt, AsyncReadExt}};
 
 #[tokio::main]
 async fn main() -> Result<()> {
